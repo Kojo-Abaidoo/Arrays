@@ -9,55 +9,17 @@
 <body>
   <main class="app">
     <header>
-      <h1>Real World Application That Requires Arrays</h1>
+      <h1>🎵 Array Music Player</h1>
+      <p class="subtitle">A real-world application powered by a JavaScript array</p>
     </header>
-
-    <!-- ========== ORIGINAL ABOUT SECTION ========== -->
-    <section class="card about">
-      <h3>📘 What is an array?</h3>
-      <p>
-        An <strong>array</strong> is a data structure that stores a collection of elements in an
-        ordered sequence, under a single name. Each element has a numbered position called an
-        <strong>index</strong>, which starts at 0. In most languages the elements sit next to each
-        other in memory, which is why any element can be reached directly by its index.
-      </p>
-      <pre class="code">const songs = ["Song A", "Song B", "Song C"];
-songs[0];       // "Song A"  (first element)
-songs.length;   // 3
-songs.push("Song D");   // add to the end</pre>
-
-      <h3>❓ Why are arrays necessary?</h3>
-      <ul class="about-list">
-        <li><strong>Many values, one name:</strong> a single <code>playlist</code> array replaces <code>song1, song2, song3…</code>.</li>
-        <li><strong>Fast access:</strong> reading <code>playlist[i]</code> takes constant time, O(1), however large the array is.</li>
-        <li><strong>Order is preserved:</strong> the sequence of songs, scores or tasks stays exactly as stored.</li>
-        <li><strong>Easy to process in bulk:</strong> loops and methods like <code>map</code>, <code>filter</code>, <code>sort</code> and <code>reduce</code> work on every element.</li>
-        <li><strong>Memory efficient:</strong> elements are stored contiguously, which makes access fast and cache-friendly.</li>
-        <li><strong>Building block:</strong> stacks, queues, heaps and hash tables are often built on arrays.</li>
-      </ul>
-
-      <h3>🌍 Real-world applications of arrays</h3>
-      <ul class="about-list">
-        <li><strong>Music and video playlists:</strong> songs stored in order, with next, previous and shuffle (this app).</li>
-        <li><strong>Shopping carts:</strong> a list of items to add, remove and total.</li>
-        <li><strong>Student grade systems:</strong> scores stored together to find the average, highest and lowest.</li>
-        <li><strong>Image galleries:</strong> pictures held in sequence and browsed by index.</li>
-        <li><strong>Game leaderboards:</strong> scores stored and sorted to rank players.</li>
-        <li><strong>To-do and task managers:</strong> tasks kept in an ordered list that can be filtered or completed.</li>
-        <li><strong>Weather and sensor data:</strong> readings recorded over time for trends and charts.</li>
-        <li><strong>Digital images and screens:</strong> a 2D array of pixels, arranged in rows and columns.</li>
-      </ul>
-    </section>
 
     <!-- ========== MUSIC PLAYER ========== -->
-    <header>
-      <h1>🎵 Array Music Player</h1>
-      <p class="subtitle">A playlist powered by a JavaScript array</p>
-    </header>
-
     <section class="player card">
       <div class="now-playing">
-        <div class="disc" id="disc">♪</div>
+        <div class="disc" id="disc">
+          <img id="discCover" class="disc-cover" alt="" />
+          <span class="disc-note" id="discNote">♪</span>
+        </div>
         <div>
           <h2 id="trackTitle">No song loaded</h2>
           <p id="trackArtist">—</p>
@@ -107,9 +69,14 @@ songs.push("Song D");   // add to the end</pre>
         <input type="text" id="newTitle" placeholder="Title" required />
         <input type="text" id="newArtist" placeholder="Artist" required />
         <input type="url" id="newUrl" placeholder="Audio URL (.mp3)" />
+        <input type="url" id="newCover" placeholder="Cover image URL (optional)" />
         <label class="file-label">
-          or choose a file
+          or choose an audio file
           <input type="file" id="newFile" accept="audio/*" />
+        </label>
+        <label class="file-label">
+          or choose a cover image
+          <input type="file" id="newCoverFile" accept="image/*" />
         </label>
         <button type="submit" class="primary">Add to playlist</button>
       </form>
@@ -121,46 +88,6 @@ songs.push("Song D");   // add to the end</pre>
       <p class="hint">This is the actual <code>playlist</code> array, updated after every operation.</p>
       <pre id="arrayView"></pre>
     </section>
-
-    <!-- ========== THREE HORIZONTAL INFO CARDS ========== -->
-    <div class="info-grid">
-      <div class="info-card">
-        <h4>📌 Why an array?</h4>
-        <ul class="about-list">
-          <li><strong>Indexed access</strong> – <code>playlist[currentIndex]</code> finds the playing song instantly (O(1)).</li>
-          <li><strong>Order preservation</strong> – songs play in the sequence they are stored.</li>
-          <li><strong>Easy iteration</strong> – loops and array methods render, search and total the list.</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>⚙️ Array operations</h4>
-        <ul class="about-list">
-          <li><strong>Add song</strong> – <code>push()</code></li>
-          <li><strong>Remove song</strong> – <code>splice()</code></li>
-          <li><strong>Reorder</strong> – swap with destructuring</li>
-          <li><strong>Shuffle</strong> – Fisher-Yates algorithm</li>
-          <li><strong>Sort A–Z</strong> – <code>sort()</code> + <code>localeCompare</code></li>
-          <li><strong>Search</strong> – <code>filter()</code> + <code>map()</code></li>
-          <li><strong>Total length</strong> – <code>reduce()</code></li>
-          <li><strong>Next/Prev</strong> – index arithmetic with modulo</li>
-          <li><strong>Find after reorder</strong> – <code>indexOf()</code></li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h4>✨ Features</h4>
-        <ul class="about-list">
-          <li>Play, pause, next, previous, repeat</li>
-          <li>Progress bar &amp; volume control</li>
-          <li>Add songs by URL or local file</li>
-          <li>Reorder, remove, shuffle, sort</li>
-          <li>Search by title or artist</li>
-          <li>Live view of the array</li>
-          <li>Playlist saved in <code>localStorage</code> (web URLs only)</li>
-        </ul>
-      </div>
-    </div>
   </main>
 
   <script src="script.js"></script>
